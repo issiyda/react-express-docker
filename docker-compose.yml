@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  app:
+    container_name: docker-react-container
+    image: node:16-alpine
+    build: ./docker/app
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c "yarn start"
+    ports:
+      - '3000:3000'
+  backend:
+    container_name: docker-express-container
+    image: node:16-alpine
+    build: ./docker/backend
+    volumes:
+      - ./backend:/usr/src/backend
+    working_dir: /usr/src/backend
+    command: sh -c "yarn start"
+    ports:
+      - '8000:8000'
