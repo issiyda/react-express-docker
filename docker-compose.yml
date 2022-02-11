@@ -3,10 +3,10 @@ services:
   app:
     container_name: docker-react-container
     image: node:16-alpine
-    build: ./docker/app
+    build: ./docker/frontend
     volumes:
-      - ./:/usr/src/app
-    working_dir: /usr/src/app
+      - ./frontend:/usr/src/frontend
+    working_dir: /usr/src/frontend
     command: sh -c "yarn start"
     ports:
       - '3000:3000'
